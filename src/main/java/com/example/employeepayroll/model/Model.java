@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 public class Model {
     @Id
-    Long employeeId;
+    long employeeId;
     String employeeName;
     String profilePic;
     String gender;
