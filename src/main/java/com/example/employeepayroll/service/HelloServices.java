@@ -49,8 +49,9 @@ Repo repository ;
             return null;
         }
     /*Delete by id method*/
-    public void deleteById(Long employeeId) {
+    public Model deleteById(Long employeeId) {
         repository.deleteById(employeeId);
+        return null;
     }
 }
 

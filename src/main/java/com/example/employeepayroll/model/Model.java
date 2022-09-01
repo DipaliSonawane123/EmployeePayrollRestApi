@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
+
 /*Class for Object*/
 @Entity
 @Data
@@ -21,7 +22,7 @@ public class Model {
     String gender;
     Long salary;
     String department;
-    Date startDate;
+   Date startDate;
     String notes;
     public Model(EmpDto dto) {
         this.employeeName = dto.getEmployeeName();
