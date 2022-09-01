@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 /*Class for Object*/
 @Entity
@@ -22,7 +23,7 @@ public class Model {
     String gender;
     Long salary;
     String department;
-   Date startDate;
+   LocalDate startDate;
     String notes;
     public Model(EmpDto dto) {
         this.employeeName = dto.getEmployeeName();

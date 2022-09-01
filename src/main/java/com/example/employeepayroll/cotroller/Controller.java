@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,21 +23,21 @@ public class Controller {
         return "Welcome To Employee payroll Application";
     }
 
-    /*Api for to save the data to Repo  data*/
+    /**POST Api for to save the data to Repo  data*/
     @PostMapping("/post")
-    public ResponseEntity<ResponseDto> addEmpData(@RequestBody EmpDto empData) {
+    public ResponseEntity<ResponseDto> addEmpData(@Valid @RequestBody EmpDto empData) {
         Model Emp = service.saveData(empData);
         ResponseDto reponseDTO = new ResponseDto("**Employee Data Added** ", Emp);
         return new ResponseEntity(reponseDTO, HttpStatus.CREATED);
     }
 
-    /*Api for Show mesaage using service layer*/
+    /**Api for Show mesaage using service layer*/
     @GetMapping("/service")
     public String serviceCall() {
         return service.helloMessage();
     }
 
-    /*Api to get data using ID delete data*/
+    /**Api to get data using ID delete data*/
     @GetMapping("/get/{employeeId}")
     public Optional<Model> sayHelloById(@PathVariable Long employeeId) {
         Optional<Model> response = service.sayHelloById(employeeId);
@@ -44,7 +45,7 @@ public class Controller {
 
     }
 
-    /*Api feach all data data*/
+    /** Api fetch all data data*/
     @GetMapping("/findAll")
     public ResponseEntity<List<Model>> sayToAll() {
         List<Model> allEmp = service.sayAll();
@@ -53,20 +54,20 @@ public class Controller {
 
     }
 
-    /*Api fot Edit data*/
+    /**Api fot Edit data*/
     @PutMapping("/editemp/{employeeId}")
-    public ResponseEntity<ResponseDto> editId(@RequestBody Model model, @PathVariable Long employeeId) {
+    public ResponseEntity<ResponseDto> editId(@Valid @RequestBody Model model, @PathVariable Long employeeId) {
         Model emp = service.editEmp(model, employeeId);
-        ResponseDto reponseDTO = new ResponseDto("** Employee Data edited sucessfully ** ", emp);
+        ResponseDto reponseDTO = new ResponseDto("** Employee Data edited successfully ** ", emp);
         return new ResponseEntity(reponseDTO, HttpStatus.ACCEPTED);
 
     }
-    /*Api fot delete data*/
+    /**Api fot delete data*/
 
     @DeleteMapping("/deleteemp/{employeeId}")
     public ResponseEntity<ResponseDto> deleteEmp(@PathVariable Long employeeId) {
         Model emp = service.deleteById(employeeId);
-        ResponseDto reponseDTO = new ResponseDto("** Employee Data deleted sucessfully ** ", emp);
+        ResponseDto reponseDTO = new ResponseDto("** Employee Data deleted successfully ** ", emp);
         return new ResponseEntity(reponseDTO, HttpStatus.ACCEPTED);
 
     }
