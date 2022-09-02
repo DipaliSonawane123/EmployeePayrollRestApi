@@ -5,13 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @NoArgsConstructor
 public class ResponseDto {
    private String message;
    private Object object ;
-   public ResponseDto(String string, Model emp) {
+   public ResponseDto(String string, Optional<Model> emp) {
        this.message=string;
        this.object = emp;
     }
@@ -23,5 +24,10 @@ public class ResponseDto {
     public ResponseDto(String string, String response) {
         this.message = string;
         this.object = response;
+    }
+
+    public ResponseDto(String s, Model emp) {
+       this.message=s;
+       this.object=emp;
     }
 }
